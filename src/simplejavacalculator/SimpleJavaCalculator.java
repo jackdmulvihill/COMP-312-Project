@@ -14,18 +14,15 @@
  * @modemail    contact@achinthagunasekara.com
  */
 
+
 package simplejavacalculator;
+import simplejavacalculator.UI;
 
 public class SimpleJavaCalculator {
-   
-   public static void main(String[] args) {
-      try {
-         UI uiCal = new UI();
-         uiCal.init();
-      }
-      catch (Exception e) {
-         System.out.println(e.getMessage());   
-      }
-      
-   }
+
+    public static void main(String[] args) {
+        UI uiCal = new UI();
+        uiCal.init();
+    }
+
 }
