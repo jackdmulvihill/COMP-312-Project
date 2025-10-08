@@ -96,6 +96,24 @@ class CalculatorTest {
 		Calculator calculator = new Calculator();
 		Assertions.assertEquals(1.0, calculator.calculateMono(Calculator.MonoOperatorModes.tan, java.lang.Math.PI / 4), 0.0000000001);
 	}
+
+	@Test
+	void CalculateMonoCscTest() {
+		Calculator calculator = new Calculator();
+		Assertions.assertEquals(2.0, calculator.calculateMono(Calculator.MonoOperatorModes.csc, java.lang.Math.PI / 6), 0.0000000001);
+	}
+	
+	@Test
+	void CalculateMonoSecTest() {
+		Calculator calculator = new Calculator();
+		Assertions.assertEquals(2.0, calculator.calculateMono(Calculator.MonoOperatorModes.sec, java.lang.Math.PI / 3), 0.0000000001);
+	}
+
+	@Test
+	void CalculateMonoCotTest() {
+		Calculator calculator = new Calculator();
+		Assertions.assertEquals(1.0, calculator.calculateMono(Calculator.MonoOperatorModes.cot, java.lang.Math.PI / 4), 0.0000000001);
+	}
 	
 	@Test
 	void CalculateMonoLogTest() {

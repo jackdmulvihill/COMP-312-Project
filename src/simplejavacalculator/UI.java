@@ -33,7 +33,7 @@ public class UI implements ActionListener {
     private final JTextArea text;
     private final JButton but[], butAdd, butMinus, butMultiply, butDivide,
             butEqual, butCancel, butSquareRoot, butSquare, butOneDevidedBy,
-            butCos, butSin, butTan, butxpowerofy, butlog, butrate;
+            butCos, butSin, butTan, butCsc, butSec, butCot, butxpowerofy, butlog, butrate;
     private final Calculator calc;
 
     private final String[] buttonValue = { "0", "1", "2", "3", "4", "5", "6",
@@ -61,6 +61,9 @@ public class UI implements ActionListener {
         butCos = new JButton("Cos");
         butSin = new JButton("Sin");
         butTan = new JButton("Tan");
+        butCsc = new JButton("Csc");
+        butSec = new JButton("Sec");
+        butCot = new JButton("Cot");
         butxpowerofy = new JButton("x^y");
         butlog = new JButton("log10(x)");
         butrate = new JButton("x%");
@@ -78,7 +81,12 @@ public class UI implements ActionListener {
 
         panel.add(text);
        
-        for (int i = 1; i < 10; i++) {
+        // Changed the loop to start from
+        //  for (int i = 1; i < 10; i++)
+        // -> to  for (int i = 0; i < 10; i++)
+        // So now, the zero button will function as intended because the
+        // original loop did not add any action listener to the zero button.
+        for (int i = 0; i < 10; i++) {
             panel.add(but[i]);
             but[i].addActionListener(this);
         }
@@ -94,6 +102,9 @@ public class UI implements ActionListener {
         panel.add(butCos);
         panel.add(butSin);
         panel.add(butTan);
+        panel.add(butCsc);
+        panel.add(butSec);
+        panel.add(butCot);
         panel.add(butxpowerofy);
         panel.add(butlog);
         panel.add(butrate);
@@ -111,6 +122,9 @@ public class UI implements ActionListener {
         butCos.addActionListener(this);
         butSin.addActionListener(this);
         butTan.addActionListener(this);
+        butCsc.addActionListener(this);
+        butSec.addActionListener(this);
+        butCot.addActionListener(this);
         butxpowerofy.addActionListener(this);
         butlog.addActionListener(this);
         butrate.addActionListener(this);
@@ -179,6 +193,18 @@ public class UI implements ActionListener {
 
         if (source == butTan) {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.tan,
+                reader()));
+        }
+        if (source == butCsc) {
+            writer(calc.calculateMono(Calculator.MonoOperatorModes.csc,
+                reader()));
+        }
+        if (source == butSec) {
+            writer(calc.calculateMono(Calculator.MonoOperatorModes.sec,
+                reader()));
+        }
+        if (source == butCot) {
+            writer(calc.calculateMono(Calculator.MonoOperatorModes.cot,
                 reader()));
         }
         if (source == butlog) {
