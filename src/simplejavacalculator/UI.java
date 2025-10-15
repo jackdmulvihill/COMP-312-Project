@@ -61,9 +61,12 @@ public class UI implements ActionListener {
         butCos = new JButton("Cos");
         butSin = new JButton("Sin");
         butTan = new JButton("Tan");
+
+        // Added buttons for csc, sec, cot functions
         butCsc = new JButton("Csc");
         butSec = new JButton("Sec");
         butCot = new JButton("Cot");
+
         butxpowerofy = new JButton("x^y");
         butlog = new JButton("log10(x)");
         butrate = new JButton("x%");
@@ -90,6 +93,7 @@ public class UI implements ActionListener {
             panel.add(but[i]);
             but[i].addActionListener(this);
         }
+
         panel.add(but[0]);
 
         panel.add(butAdd);
@@ -122,9 +126,12 @@ public class UI implements ActionListener {
         butCos.addActionListener(this);
         butSin.addActionListener(this);
         butTan.addActionListener(this);
+
+        // Added action listeners for csc, sec, cot buttons
         butCsc.addActionListener(this);
         butSec.addActionListener(this);
         butCot.addActionListener(this);
+
         butxpowerofy.addActionListener(this);
         butlog.addActionListener(this);
         butrate.addActionListener(this);
@@ -195,22 +202,27 @@ public class UI implements ActionListener {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.tan,
                 reader()));
         }
+
         if (source == butCsc) {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.csc,
                 reader()));
         }
+
         if (source == butSec) {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.sec,
                 reader()));
         }
+
         if (source == butCot) {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.cot,
                 reader()));
         }
+
         if (source == butlog) {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.log,
                 reader()));
         }
+        
          if (source == butrate) {
             writer(calc.calculateMono(Calculator.MonoOperatorModes.rate,
                 reader()));

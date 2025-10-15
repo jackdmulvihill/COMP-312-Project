@@ -97,6 +97,7 @@ class CalculatorTest {
 		Assertions.assertEquals(1.0, calculator.calculateMono(Calculator.MonoOperatorModes.tan, java.lang.Math.PI / 4), 0.0000000001);
 	}
 
+	// Additional tests for the new MonoOperatorModes added
 	@Test
 	void CalculateMonoCscTest() {
 		Calculator calculator = new Calculator();
