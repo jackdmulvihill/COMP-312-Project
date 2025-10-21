@@ -27,10 +27,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-private boolean statMode = false;  // Track if we're in stat mode
-private final JButton butStatMode;  // Toggle button
-
 public class UI implements ActionListener {
+    private boolean statMode = false;  // Track if we're in stat mode
+    private final JButton butStatMode;  // Toggle button
     private final JFrame frame;
     private final JPanel panel;
     private final JTextArea text;
@@ -178,11 +177,76 @@ public class UI implements ActionListener {
         butSum.addActionListener(this);
         butStdDev.addActionListener(this);
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         final Object source = e.getSource();
-
+        
+        // Handle Stat Mode toggle first
+        if (source == butStatMode) {
+            statMode = !statMode;  // Toggle the mode
+            if (statMode) {
+                butStatMode.setText("Stat Mode: ON");
+                text.setText("Enter numbers separated by commas");
+                
+                // Hide regular operation buttons
+                butAdd.setVisible(false);
+                butMinus.setVisible(false);
+                butMultiply.setVisible(false);
+                butDivide.setVisible(false);
+                butSquare.setVisible(false);
+                butSquareRoot.setVisible(false);
+                butOneDevidedBy.setVisible(false);
+                butCos.setVisible(false);
+                butSin.setVisible(false);
+                butTan.setVisible(false);
+                butxpowerofy.setVisible(false);
+                butlog.setVisible(false);
+                butrate.setVisible(false);
+                butEqual.setVisible(false);
+                
+                // Show stat buttons
+                butMin.setVisible(true);
+                butMax.setVisible(true);
+                butMean.setVisible(true);
+                butMedian.setVisible(true);
+                butSum.setVisible(true);
+                butStdDev.setVisible(true);
+            } else {
+                butStatMode.setText("Stat Mode: OFF");
+                text.setText("");
+                
+                // Show regular operation buttons
+                butAdd.setVisible(true);
+                butMinus.setVisible(true);
+                butMultiply.setVisible(true);
+                butDivide.setVisible(true);
+                butSquare.setVisible(true);
+                butSquareRoot.setVisible(true);
+                butOneDevidedBy.setVisible(true);
+                butCos.setVisible(true);
+                butSin.setVisible(true);
+                butTan.setVisible(true);
+                butxpowerofy.setVisible(true);
+                butlog.setVisible(true);
+                butrate.setVisible(true);
+                butEqual.setVisible(true);
+                
+                // Hide stat buttons
+                butMin.setVisible(false);
+                butMax.setVisible(false);
+                butMean.setVisible(false);
+                butMedian.setVisible(false);
+                butSum.setVisible(false);
+                butStdDev.setVisible(false);
+            }
+            
+            panel.revalidate();
+            panel.repaint();
+            text.selectAll();
+            return;
+        }
+        
+        // Number buttons work in both modes
         for (int i = 0; i < 10; i++) {
             if (source == but[i]) {
                 text.replaceSelection(buttonValue[i]);
@@ -190,148 +254,188 @@ public class UI implements ActionListener {
             }
         }
 
-        if (source == butAdd) {
-            writer(calc.calculateBi(Calculator.BiOperatorModes.add, reader()));
-        }
-
-        if (source == butMinus) {
-            writer(calc.calculateBi(Calculator.BiOperatorModes.minus, reader()));
-        }
-
-        if (source == butMultiply) {
-            writer(calc.calculateBi(Calculator.BiOperatorModes.multiply,
-                reader()));
-        }
-
-        if (source == butDivide) {
-            writer(calc
-                .calculateBi(Calculator.BiOperatorModes.divide, reader()));
-        }
-        if (source == butxpowerofy) {
-            writer(calc
-                .calculateBi(Calculator.BiOperatorModes.xpowerofy, reader()));
-        }
-
-        if (source == butSquare) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.square,
-                reader()));
-        }
-
-        if (source == butSquareRoot) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.squareRoot,
-                reader()));
-        }
-
-        if (source == butOneDevidedBy) {
-            writer(calc.calculateMono(
-                    Calculator.MonoOperatorModes.oneDevidedBy, reader()));
-        }
-
-        if (source == butCos) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.cos,
-                reader()));
-        }
-
-        if (source == butSin) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.sin,
-                reader()));
-        }
-
-        if (source == butTan) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.tan,
-                reader()));
-        }
-
-        if (source == butCsc) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.csc,
-                reader()));
-        }
-
-        if (source == butSec) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.sec,
-                reader()));
-        }
-
-        if (source == butCot) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.cot,
-                reader()));
-        }
-
-        if (source == butlog) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.log,
-                reader()));
-        }
-        
-         if (source == butrate) {
-            writer(calc.calculateMono(Calculator.MonoOperatorModes.rate,
-                reader()));
-        }
-
-        if (source == butEqual) {
-            writer(calc.calculateEqual(reader()));
-        }
-
-        if (source == butCancel) {
-            writer(calc.reset());
-        }
-
-        if (source == butMin) {
-            writer(calc.calculateStat(Calculator.StatOperatorModes.min, arrayReader()));
-        }
-
-        if (source == butMax) {
-            writer(calc.calculateStat(Calculator.StatOperatorModes.max, arrayReader()));
-        }
-
-        if (source == butMean) {
-            writer(calc.calculateStat(Calculator.StatOperatorModes.mean, arrayReader()));
-        }
-
-        if (source == butMedian) {
-            writer(calc.calculateStat(Calculator.StatOperatorModes.median, arrayReader()));
-        }
-
-        if (source == butSum) {
-            writer(calc.calculateStat(Calculator.StatOperatorModes.sum, arrayReader()));
-        }
-
-        if (source == butStdDev) {
-            writer(calc.calculateStat(Calculator.StatOperatorModes.stddev, arrayReader()));
-        }
-
-        text.selectAll();
-    }
-
-    public Double reader() {
-        Double num;
-        String str;
-        str = text.getText();
-        num = Double.valueOf(str);
-
-        return num;
-    }
-
-    public Double[] arrayReader() {
-        String str = text.getText();
-        // Split by comma, space, or semicolon
-        String[] parts = str.split("[,;\\s]+");
-        Double[] numbers = new Double[parts.length];
-    
-        try {
-            for (int i = 0; i < parts.length; i++) {
-                numbers[i] = Double.valueOf(parts[i].trim());
+        // Statistical operations - only work in stat mode
+        if (statMode) {
+            if (source == butMin) {
+                Double[] arr = arrayReader();
+                if (arr != null && arr.length > 0) {
+                    writer(calc.calculateStat(Calculator.StatOperatorModes.min, arr));
+                } else {
+                    text.setText("Invalid input");
+                }
+                text.selectAll();
+                return;
             }
-            return numbers;
-        } catch (NumberFormatException e) {
-            return null;
+
+            if (source == butMax) {
+                Double[] arr = arrayReader();
+                if (arr != null && arr.length > 0) {
+                    writer(calc.calculateStat(Calculator.StatOperatorModes.max, arr));
+                } else {
+                    text.setText("Invalid input");
+                }
+                text.selectAll();
+                return;
+            }
+
+            if (source == butMean) {
+                Double[] arr = arrayReader();
+                if (arr != null && arr.length > 0) {
+                    writer(calc.calculateStat(Calculator.StatOperatorModes.mean, arr));
+                } else {
+                    text.setText("Invalid input");
+                }
+                text.selectAll();
+                return;
+            }
+
+            if (source == butMedian) {
+                Double[] arr = arrayReader();
+                if (arr != null && arr.length > 0) {
+                    writer(calc.calculateStat(Calculator.StatOperatorModes.median, arr));
+                } else {
+                    text.setText("Invalid input");
+                }
+                text.selectAll();
+                return;
+            }
+
+            if (source == butSum) {
+                Double[] arr = arrayReader();
+                if (arr != null && arr.length > 0) {
+                    writer(calc.calculateStat(Calculator.StatOperatorModes.sum, arr));
+                } else {
+                    text.setText("Invalid input");
+                }
+                text.selectAll();
+                return;
+            }
+
+            if (source == butStdDev) {
+                Double[] arr = arrayReader();
+                if (arr != null && arr.length > 0) {
+                    writer(calc.calculateStat(Calculator.StatOperatorModes.stddev, arr));
+                } else {
+                    text.setText("Invalid input");
+                }
+                text.selectAll();
+                return;
+            }
+
+            // Cancel button works in stat mode too
+            if (source == butCancel) {
+                text.setText("Enter numbers separated by commas");
+                text.selectAll();
+                return;
+            }
+            
+            // If we're in stat mode and reach here, ignore other buttons
+            return;
+        }
+
+        // Regular calculator operations - only work when NOT in stat mode
+        if (!statMode) {
+            if (source == butAdd) {
+                writer(calc.calculateBi(Calculator.BiOperatorModes.add, reader()));
+            }
+
+            if (source == butMinus) {
+                writer(calc.calculateBi(Calculator.BiOperatorModes.minus, reader()));
+            }
+
+            if (source == butMultiply) {
+                writer(calc.calculateBi(Calculator.BiOperatorModes.multiply, reader()));
+            }
+
+            if (source == butDivide) {
+                writer(calc.calculateBi(Calculator.BiOperatorModes.divide, reader()));
+            }
+            
+            if (source == butxpowerofy) {
+                writer(calc.calculateBi(Calculator.BiOperatorModes.xpowerofy, reader()));
+            }
+
+            if (source == butSquare) {
+                writer(calc.calculateMono(Calculator.MonoOperatorModes.square, reader()));
+            }
+
+            if (source == butSquareRoot) {
+                writer(calc.calculateMono(Calculator.MonoOperatorModes.squareRoot, reader()));
+            }
+
+            if (source == butOneDevidedBy) {
+                writer(calc.calculateMono(Calculator.MonoOperatorModes.oneDevidedBy, reader()));
+            }
+
+            if (source == butCos) {
+                writer(calc.calculateMono(Calculator.MonoOperatorModes.cos, reader()));
+            }
+
+            if (source == butSin) {
+                writer(calc.calculateMono(Calculator.MonoOperatorModes.sin, reader()));
+            }
+
+            if (source == butTan) {
+                writer(calc.calculateMono(Calculator.MonoOperatorModes.tan, reader()));
+            }
+            
+            if (source == butlog) {
+                writer(calc.calculateMono(Calculator.MonoOperatorModes.log, reader()));
+            }
+            
+            if (source == butrate) {
+                writer(calc.calculateMono(Calculator.MonoOperatorModes.rate, reader()));
+            }
+
+            if (source == butEqual) {
+                writer(calc.calculateEqual(reader()));
+            }
+
+            if (source == butCancel) {
+                writer(calc.reset());
+            }
+
+            text.selectAll();
         }
     }
 
     public void writer(final Double num) {
-        if (Double.isNaN(num)) {
+        if (num == null || Double.isNaN(num)) {
             text.setText("");
         } else {
             text.setText(Double.toString(num));
         }
+    }
+
+    /**
+     * Read a single double value from the text area (regular mode)
+     */
+    public Double reader() {
+        try {
+            String str = text.getText();
+            return Double.valueOf(str);
+        } catch (Exception ex) {
+            text.setText("0");
+            return 0.0;
+        }
+    }
+
+    /**
+     * Parse comma-separated numbers from the text area into a Double[]
+     */
+    private Double[] arrayReader() {
+        String s = text.getText();
+        if (s == null || s.trim().isEmpty()) return null;
+        String[] parts = s.split(",");
+        java.util.List<Double> list = new java.util.ArrayList<>();
+        try {
+            for (String p : parts) {
+                String t = p.trim();
+                if (!t.isEmpty()) list.add(Double.valueOf(t));
+            }
+        } catch (NumberFormatException ex) {
+            return null;
+        }
+        return list.toArray(new Double[0]);
     }
 }
