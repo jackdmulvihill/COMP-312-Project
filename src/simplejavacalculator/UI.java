@@ -27,6 +27,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+private boolean statMode = false;  // Track if we're in stat mode
+private final JButton butStatMode;  // Toggle button
+
 public class UI implements ActionListener {
     private final JFrame frame;
     private final JPanel panel;
