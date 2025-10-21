@@ -186,7 +186,6 @@ public class UI implements ActionListener {
             statMode = !statMode;  // Toggle the mode
             if (statMode) {
                 butStatMode.setText("Stat Mode: ON");
-                text.setText("Enter numbers separated by commas");
                 
                 // Hide regular operation buttons
                 butAdd.setVisible(false);
