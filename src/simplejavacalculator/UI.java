@@ -94,7 +94,7 @@ public class UI implements ActionListener {
 
     public void init() {
         frame.setVisible(true);
-        frame.setSize(330, 300);
+        frame.setSize(900, 900);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
