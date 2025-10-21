@@ -31,9 +31,12 @@ public class UI implements ActionListener {
     private final JFrame frame;
     private final JPanel panel;
     private final JTextArea text;
+
+    // Added new buttons for all new functions added
     private final JButton but[], butAdd, butMinus, butMultiply, butDivide,
             butEqual, butCancel, butSquareRoot, butSquare, butOneDevidedBy,
-            butCos, butSin, butTan, butCsc, butSec, butCot, butxpowerofy, butlog, butrate;
+            butCos, butSin, butTan, butCsc, butSec, butCot, butxpowerofy, butlog, butrate,
+            butMin, butMax, butMean, butMedian, butSum, butStdDev;
     private final Calculator calc;
 
     private final String[] buttonValue = { "0", "1", "2", "3", "4", "5", "6",
@@ -71,6 +74,14 @@ public class UI implements ActionListener {
         butlog = new JButton("log10(x)");
         butrate = new JButton("x%");
 
+        // Added buttons for statistical functions
+        butMin = new JButton("Min");
+        butMax = new JButton("Max");
+        butMean = new JButton("Mean");
+        butMedian = new JButton("Median");
+        butSum = new JButton("Sum");
+        butStdDev = new JButton("StdDev");
+
         butCancel = new JButton("C");
 
         calc = new Calculator();
@@ -106,15 +117,24 @@ public class UI implements ActionListener {
         panel.add(butCos);
         panel.add(butSin);
         panel.add(butTan);
+        // Added buttons to the panel
         panel.add(butCsc);
         panel.add(butSec);
         panel.add(butCot);
+
         panel.add(butxpowerofy);
         panel.add(butlog);
         panel.add(butrate);
 
         panel.add(butEqual);
         panel.add(butCancel);
+
+        panel.add(butMin);
+        panel.add(butMax);
+        panel.add(butMean);
+        panel.add(butMedian);
+        panel.add(butSum);
+        panel.add(butStdDev);
 
         butAdd.addActionListener(this);
         butMinus.addActionListener(this);
@@ -138,6 +158,13 @@ public class UI implements ActionListener {
 
         butEqual.addActionListener(this);
         butCancel.addActionListener(this);
+
+        butMin.addActionListener(this);
+        butMax.addActionListener(this);
+        butMean.addActionListener(this);
+        butMedian.addActionListener(this);
+        butSum.addActionListener(this);
+        butStdDev.addActionListener(this);
     }
 
     @Override
@@ -236,6 +263,30 @@ public class UI implements ActionListener {
             writer(calc.reset());
         }
 
+        if (source == butMin) {
+            writer(calc.calculateStat(Calculator.StatOperatorModes.min, arrayReader()));
+        }
+
+        if (source == butMax) {
+            writer(calc.calculateStat(Calculator.StatOperatorModes.max, arrayReader()));
+        }
+
+        if (source == butMean) {
+            writer(calc.calculateStat(Calculator.StatOperatorModes.mean, arrayReader()));
+        }
+
+        if (source == butMedian) {
+            writer(calc.calculateStat(Calculator.StatOperatorModes.median, arrayReader()));
+        }
+
+        if (source == butSum) {
+            writer(calc.calculateStat(Calculator.StatOperatorModes.sum, arrayReader()));
+        }
+
+        if (source == butStdDev) {
+            writer(calc.calculateStat(Calculator.StatOperatorModes.stddev, arrayReader()));
+        }
+
         text.selectAll();
     }
 
@@ -246,6 +297,22 @@ public class UI implements ActionListener {
         num = Double.valueOf(str);
 
         return num;
+    }
+
+    public Double[] arrayReader() {
+        String str = text.getText();
+        // Split by comma, space, or semicolon
+        String[] parts = str.split("[,;\\s]+");
+        Double[] numbers = new Double[parts.length];
+    
+        try {
+            for (int i = 0; i < parts.length; i++) {
+                numbers[i] = Double.valueOf(parts[i].trim());
+            }
+            return numbers;
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 
     public void writer(final Double num) {

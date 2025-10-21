@@ -135,4 +135,45 @@ class CalculatorTest {
 		Assertions.assertEquals(3.0, calculator.calculateMono(Calculator.MonoOperatorModes.abs, 3.0));
 	}
 
+	@Test
+	void calculateStatsMinTest() {
+		Calculator calculator = new Calculator();
+		double[] data = {3.0, 1.0, 4.0, 1.5};
+		Assertions.assertEquals(1.0, calculator.calculateStats(Calculator.StatsOperatorModes.min, data));
+	}
+
+	@Test
+	void calculateStatsMaxTest() {
+		Calculator calculator = new Calculator();
+		double[] data = {3.0, 1.0, 4.0, 1.5};
+		Assertions.assertEquals(4.0, calculator.calculateStats(Calculator.StatsOperatorModes.max, data));
+	}
+
+	@Test
+	void calculateStatsMeanTest() {
+		Calculator calculator = new Calculator();
+		double[] data = {3.0, 1.0, 4.0, 1.5};
+		Assertions.assertEquals(2.375, calculator.calculateStats(Calculator.StatsOperatorModes.mean, data));
+	}
+	
+	@Test
+	void calculateStatsMedianTest() {
+		Calculator calculator = new Calculator();
+		double[] data = {3.0, 1.0, 4.0, 1.5};
+		Assertions.assertEquals(2.25, calculator.calculateStats(Calculator.StatsOperatorModes.median, data));
+	}
+
+	@Test
+	void calculateStatsSumTest() {
+		Calculator calculator = new Calculator();
+		double[] data = {3.0, 1.0, 4.0, 1.5};
+		Assertions.assertEquals(9.5, calculator.calculateStats(Calculator.StatsOperatorModes.sum, data));
+	}
+
+	@Test
+	void calculateStatsStdDevTest() {
+		Calculator calculator = new Calculator();
+		double[] data = {3.0, 1.0, 4.0, 1.5};
+		Assertions.assertEquals(1.136, calculator.calculateStats(Calculator.StatsOperatorModes.stdDev, data), 0.001);
+	}
 }

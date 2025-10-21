@@ -5,6 +5,14 @@ import static java.lang.Math.log10;
 import static java.lang.Math.pow;
 
 public class Calculator {
+
+    // New ArrayOperatorModes enum added for the use of statistical functions
+    // These functions will take an array as input (i.e. a list of numbers typed
+    // by the user) and calculate various statistical values such as min, max, etc...
+    public enum StatOperatorModes {
+        min, max, mean, median, sum, stddev
+    }
+
     public enum BiOperatorModes {
         normal, add, minus, multiply, divide , xpowerofy 
     }
@@ -135,5 +143,74 @@ public class Calculator {
         // never reach
         throw new Error();
     }
+
+    public Double calculateStat(StatOperatorModes mode, Double[] numbers) {
+        if (numbers == null || numbers.length == 0) {
+            return Double.NaN;
+        }
+        
+    if (mode == StatOperatorModes.min) {
+            Double min = numbers[0];
+            for (Double num : numbers) {
+                if (num < min) min = num;
+            }
+            return min;
+        }
+        
+    if (mode == StatOperatorModes.max) {
+            Double max = numbers[0];
+            for (Double num : numbers) {
+                if (num > max) max = num;
+            }
+            return max;
+        }
+        
+    if (mode == StatOperatorModes.mean) {
+            Double sum = 0.0;
+            for (Double num : numbers) {
+                sum += num;
+            }
+            return sum / numbers.length;
+        }
+    
+    if (mode == StatOperatorModes.sum) {
+            Double sum = 0.0;
+            for (Double num : numbers) {
+            sum += num;
+            }
+            return sum;
+        }
+    
+    if (mode == StatOperatorModes.median) {
+            Double[] sorted = numbers.clone();
+            java.util.Arrays.sort(sorted);
+            int middle = sorted.length / 2;
+            if (sorted.length % 2 == 0) {
+                return (sorted[middle - 1] + sorted[middle]) / 2.0;
+            } else {
+                return sorted[middle];
+            }
+        }
+    
+    if (mode == StatOperatorModes.stddev) {
+            // Calculate mean first
+            Double sum = 0.0;
+            for (Double num : numbers) {
+                sum += num;
+            }
+            Double mean = sum / numbers.length;
+        
+            // Calculate variance
+            Double variance = 0.0;
+            for (Double num : numbers) {
+                variance += Math.pow(num - mean, 2);
+            }
+            variance /= numbers.length;
+        
+            // Standard deviation is square root of variance
+            return Math.sqrt(variance);
+        }
+    
+    throw new Error();
 
 }
