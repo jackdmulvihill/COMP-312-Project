@@ -77,6 +77,9 @@ public class UI implements ActionListener {
         butlog = new JButton("log10(x)");
         butrate = new JButton("x%");
 
+        // Button to toggle stat mode
+        butStatMode = new JButton("Stat Mode: OFF");
+
         // Added buttons for statistical functions
         butMin = new JButton("Min");
         butMax = new JButton("Max");
@@ -120,6 +123,7 @@ public class UI implements ActionListener {
         panel.add(butCos);
         panel.add(butSin);
         panel.add(butTan);
+
         // Added buttons to the panel
         panel.add(butCsc);
         panel.add(butSec);
@@ -131,6 +135,8 @@ public class UI implements ActionListener {
 
         panel.add(butEqual);
         panel.add(butCancel);
+
+        panel.add(butStatMode);
 
         panel.add(butMin);
         panel.add(butMax);
@@ -154,6 +160,9 @@ public class UI implements ActionListener {
         butCsc.addActionListener(this);
         butSec.addActionListener(this);
         butCot.addActionListener(this);
+
+        // Added action listener for stat mode
+        butStatMode.addActionListener(this);
 
         butxpowerofy.addActionListener(this);
         butlog.addActionListener(this);
