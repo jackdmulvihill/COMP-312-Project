@@ -18,13 +18,14 @@
 
 package simplejavacalculator;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.JTextArea; 
 
 public class UI implements ActionListener {
     private boolean statMode = false;  // Track if we're in stat mode
@@ -44,14 +45,21 @@ public class UI implements ActionListener {
             "7", "8", "9" };
 
     public UI() {
-        frame = new JFrame("Calculator PH");
+        frame = new JFrame("STAT Calculator"); 
         frame.setResizable(true);
         panel = new JPanel(new FlowLayout());
 
+        panel.setBackground(Color.PINK);
+
         text = new JTextArea(2, 25);
+        text.setBackground(Color.WHITE); // Set background color for the text area
+        text.setForeground(Color.BLACK); // Set text color for the text area
+
         but = new JButton[10];
         for (int i = 0; i < 10; i++) {
             but[i] = new JButton(String.valueOf(i));
+            but[i].setBackground(Color.LIGHT_GRAY); // Set button background color
+            but[i].setForeground(Color.BLACK); // Set button text color
         }
 
         butAdd = new JButton("+");
@@ -85,8 +93,14 @@ public class UI implements ActionListener {
         butMedian = new JButton("Median");
         butSum = new JButton("Sum");
         butStdDev = new JButton("StdDev");
-
         butCancel = new JButton("C");
+
+        // Set colors for operation buttons
+        JButton[] operationButtons = {butAdd, butMinus, butMultiply, butDivide};
+            for (JButton button : operationButtons) {
+            button.setBackground(Color.ORANGE); // Background color
+            button.setForeground(Color.BLACK);  // Text color
+    }
 
         calc = new Calculator();
     }
