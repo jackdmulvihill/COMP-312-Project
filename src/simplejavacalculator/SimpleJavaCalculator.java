@@ -16,8 +16,6 @@
 
 
 package simplejavacalculator;
-import simplejavacalculator.UI;
-
 public class SimpleJavaCalculator {
 
     public static void main(String[] args) {

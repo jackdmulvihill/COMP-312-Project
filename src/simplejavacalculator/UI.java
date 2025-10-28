@@ -21,7 +21,6 @@ package simplejavacalculator;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -46,7 +45,7 @@ public class UI implements ActionListener {
 
     public UI() {
         frame = new JFrame("Calculator PH");
-        frame.setResizable(false);
+        frame.setResizable(true);
         panel = new JPanel(new FlowLayout());
 
         text = new JTextArea(2, 25);
@@ -94,7 +93,7 @@ public class UI implements ActionListener {
 
     public void init() {
         frame.setVisible(true);
-        frame.setSize(900, 900);
+        frame.setSize(600, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
