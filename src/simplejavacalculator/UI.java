@@ -19,6 +19,7 @@
 package simplejavacalculator;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,6 +45,10 @@ public class UI implements ActionListener {
     private final String[] buttonValue = { "0", "1", "2", "3", "4", "5", "6",
             "7", "8", "9" };
 
+    // Define button dimensions
+    private static final int BUTTON_WIDTH = 60;
+    private static final int BUTTON_HEIGHT = 60;
+
     public UI() {
         frame = new JFrame("STAT Calculator"); 
         frame.setResizable(true);
@@ -51,15 +56,18 @@ public class UI implements ActionListener {
 
         panel.setBackground(Color.PINK);
 
-        text = new JTextArea(2, 25);
+        text = new JTextArea(2, 14); // adjusted text box size
         text.setBackground(Color.ORANGE); // Set background color for the text area
         text.setForeground(Color.BLACK); // Set text color for the text area
+        text.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 35)); // Set font style and size
+        text.setPreferredSize(new Dimension(100, 100)); // Set preferred size for the text area
 
         but = new JButton[10];
         for (int i = 0; i < 10; i++) {
             but[i] = new JButton(String.valueOf(i));
             but[i].setBackground(Color.LIGHT_GRAY); // Set button background color
             but[i].setForeground(Color.BLACK); // Set button text color
+            but[i].setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
         }
 
         butAdd = new JButton("+");
@@ -95,6 +103,19 @@ public class UI implements ActionListener {
         butStdDev = new JButton("StdDev");
         butCancel = new JButton("C");
 
+        // Set sizes for new buttons
+        JButton[] allButtons = {
+            butAdd, butMinus, butMultiply, butDivide,
+            butEqual, butSquareRoot, butSquare, butOneDevidedBy,
+            butCos, butSin, butTan, butCsc, butSec, butCot,
+            butxpowerofy, butlog, butrate,
+            butMin, butMax, butMean, butMedian, butSum, butStdDev,
+            butStatMode, butCancel
+        };
+        for (JButton button : allButtons) {
+            button.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        }
+
         // COME BACK TO THIS
         // Set colors for operation buttons
         JButton[] operationButtons = {butAdd, butMinus, butMultiply, butDivide};
@@ -108,7 +129,7 @@ public class UI implements ActionListener {
 
     public void init() {
         frame.setVisible(true);
-        frame.setSize(350, 450);
+        frame.setSize(450, 550); // Bigger default size
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
 
@@ -125,7 +146,7 @@ public class UI implements ActionListener {
         }
 
         panel.add(but[0]);
-
+        
         panel.add(butAdd);
         panel.add(butMinus);
         panel.add(butMultiply);
