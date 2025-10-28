@@ -52,7 +52,7 @@ public class UI implements ActionListener {
         panel.setBackground(Color.PINK);
 
         text = new JTextArea(2, 25);
-        text.setBackground(Color.WHITE); // Set background color for the text area
+        text.setBackground(Color.ORANGE); // Set background color for the text area
         text.setForeground(Color.BLACK); // Set text color for the text area
 
         but = new JButton[10];
@@ -95,6 +95,7 @@ public class UI implements ActionListener {
         butStdDev = new JButton("StdDev");
         butCancel = new JButton("C");
 
+        // COME BACK TO THIS
         // Set colors for operation buttons
         JButton[] operationButtons = {butAdd, butMinus, butMultiply, butDivide};
             for (JButton button : operationButtons) {
