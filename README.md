@@ -1,34 +1,26 @@
 <div align="center">
 
-# Simple Java Calculator
+# New and Improved Simple Java Calculator
 
 ![Logo Simple Java Calculator](logo.png)
 
 ---
-
-This calculator is **simple** with an **easy to use code** to help novices **learn how to create a calculator** program with **`Java`**.
+## Original Project Details
+https://github.com/pH-7/Simple-Java-Calculator
 
 ---
 
 </div>
 
-This project was **originally written using `Eclipse`**, but I have **migrated it to NetBeans**.
+## New additions
+- **Statistical Mode Interface**
+- **Redesigned UI**
 
-If you use the executable "SimpleJavaCalculator.jar" file and that doesn't work, you can type this in your terminal:
+## To Compile New Changes
+- **javac src/simplejavacalculator/*.java**
 
-```shell
-java -jar /your_calculator_directory/SimpleJavaCalculator.jar`
-```
-
-## :sparkles: Example
-
-![Example: Java Calculator](Screenshots/screenshot.png)
-
-## You might also like :monocle_face:
-
-**[My Simple Java Text Editor](https://github.com/pH-7/Simple-Java-Text-Editor).**
-
-[![Open-Source Simple Java Text Editor](https://github.com/pH-7/Simple-Java-Text-Editor/blob/master/Screenshots/find-replace-word-in-java-text-editor.png)](https://github.com/pH-7/Simple-Java-Text-Editor "Open-Source Simple Java Text Editor")
+## To Run
+- **java -cp src simplejavacalculator.SimpleJavaCalculator**
 
 
 ## 💡 Authors

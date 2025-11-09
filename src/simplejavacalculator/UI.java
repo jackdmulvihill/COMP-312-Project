@@ -1,3 +1,5 @@
+// Original author information retained in accordance with licensing
+
 /**
  * @name        Simple Java Calculator
  * @package     ph.calculator
@@ -92,6 +94,8 @@ public class UI implements ActionListener {
         butrate = new JButton("x%");
 
         // Button to toggle stat mode
+        // Initial text indicates stat mode is off
+        // When clicked, it will toggle the mode and update UI accordingly
         butStatMode = new JButton("Stat Mode: OFF");
 
         // Added buttons for statistical functions
@@ -101,6 +105,7 @@ public class UI implements ActionListener {
         butMedian = new JButton("Median");
         butSum = new JButton("Sum");
         butStdDev = new JButton("StdDev");
+
         butCancel = new JButton("C");
 
         // Set sizes for new buttons
@@ -158,7 +163,7 @@ public class UI implements ActionListener {
         panel.add(butSin);
         panel.add(butTan);
 
-        // Added buttons to the panel
+        // Added buttons for the csc, sec, cot functions to the panel
         panel.add(butCsc);
         panel.add(butSec);
         panel.add(butCot);
@@ -170,8 +175,12 @@ public class UI implements ActionListener {
         panel.add(butEqual);
         panel.add(butCancel);
 
+        // Added the stat mode toggle button
         panel.add(butStatMode);
 
+        // Added statistical function buttons to the panel
+        // They will be hidden initially
+        // and only shown when stat mode is activated
         panel.add(butMin);
         panel.add(butMax);
         panel.add(butMean);
@@ -195,7 +204,7 @@ public class UI implements ActionListener {
         butSec.addActionListener(this);
         butCot.addActionListener(this);
 
-        // Added action listener for stat mode
+        // Added action listener for stat mode button
         butStatMode.addActionListener(this);
 
         butxpowerofy.addActionListener(this);
@@ -205,6 +214,7 @@ public class UI implements ActionListener {
         butEqual.addActionListener(this);
         butCancel.addActionListener(this);
 
+        // Added action listeners for statistical function buttons
         butMin.addActionListener(this);
         butMax.addActionListener(this);
         butMean.addActionListener(this);

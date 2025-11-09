@@ -97,19 +97,21 @@ class CalculatorTest {
         Assertions.assertEquals(1.0, calculator.calculateMono(Calculator.MonoOperatorModes.tan, java.lang.Math.PI / 4), 0.0000000001);
     }
 
-    // Additional tests for the new MonoOperatorModes added
+    // Added test case for csc function
     @Test
     void CalculateMonoCscTest() {
         Calculator calculator = new Calculator();
         Assertions.assertEquals(2.0, calculator.calculateMono(Calculator.MonoOperatorModes.csc, java.lang.Math.PI / 6), 0.0000000001);
     }
 
+    // Added test case for sec function
     @Test
     void CalculateMonoSecTest() {
         Calculator calculator = new Calculator();
         Assertions.assertEquals(2.0, calculator.calculateMono(Calculator.MonoOperatorModes.sec, java.lang.Math.PI / 3), 0.0000000001);
     }
 
+    // Added test case for cot function
     @Test
     void CalculateMonoCotTest() {
         Calculator calculator = new Calculator();
@@ -135,6 +137,8 @@ class CalculatorTest {
         Assertions.assertEquals(3.0, calculator.calculateMono(Calculator.MonoOperatorModes.abs, 3.0));
     }
 
+    // Statistical function tests
+    // Added test for min calculation
     @Test
     void calculateStatsMinTest() {
         Calculator calculator = new Calculator();
@@ -142,6 +146,7 @@ class CalculatorTest {
         Assertions.assertEquals(1.0, calculator.calculateStats(Calculator.StatsOperatorModes.min, data));
     }
 
+    // Added test for max calculation
     @Test
     void calculateStatsMaxTest() {
         Calculator calculator = new Calculator();
@@ -149,6 +154,7 @@ class CalculatorTest {
         Assertions.assertEquals(4.0, calculator.calculateStats(Calculator.StatsOperatorModes.max, data));
     }
 
+    // Added test for mean calculation
     @Test
     void calculateStatsMeanTest() {
         Calculator calculator = new Calculator();
@@ -156,6 +162,7 @@ class CalculatorTest {
         Assertions.assertEquals(2.375, calculator.calculateStats(Calculator.StatsOperatorModes.mean, data));
     }
 
+    // Added test for median calculation
     @Test
     void calculateStatsMedianTest() {
         Calculator calculator = new Calculator();
@@ -163,6 +170,7 @@ class CalculatorTest {
         Assertions.assertEquals(2.25, calculator.calculateStats(Calculator.StatsOperatorModes.median, data));
     }
 
+    // Added test for sum calculation
     @Test
     void calculateStatsSumTest() {
         Calculator calculator = new Calculator();
@@ -170,10 +178,11 @@ class CalculatorTest {
         Assertions.assertEquals(9.5, calculator.calculateStats(Calculator.StatsOperatorModes.sum, data));
     }
 
+    // Added test for standard deviation calculation
     @Test
     void calculateStatsStdDevTest() {
         Calculator calculator = new Calculator();
         double[] data = {3.0, 1.0, 4.0, 1.5};
         Assertions.assertEquals(1.136, calculator.calculateStats(Calculator.StatsOperatorModes.stdDev, data), 0.001);
     }
-}
+} // End of CalculatorTest class
