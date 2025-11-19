@@ -115,11 +115,15 @@ public class UI implements ActionListener {
             butCos, butSin, butTan, butCsc, butSec, butCot,
             butxpowerofy, butlog, butrate,
             butMin, butMax, butMean, butMedian, butSum, butStdDev,
-            butStatMode, butCancel
+            butCancel
         };
         for (JButton button : allButtons) {
             button.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
         }
+
+        // Width increase for the Stat Mode toggle button and log button
+        butStatMode.setPreferredSize(new Dimension(130, BUTTON_HEIGHT));
+        butlog.setPreferredSize(new Dimension(130, BUTTON_HEIGHT));
 
         // COME BACK TO THIS
         // Set colors for operation buttons
