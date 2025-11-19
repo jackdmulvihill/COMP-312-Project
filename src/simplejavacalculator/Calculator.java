@@ -34,7 +34,7 @@ public class Calculator {
 
     // Added csc, sec, cot functions
     public enum MonoOperatorModes {
-        square, squareRoot, oneDevidedBy, cos, sin, tan, csc, sec, cot, log, rate
+        square, squareRoot, oneDividedBy, cos, sin, tan, csc, sec, cot, log, rate
     } // End of enum MonoOperatorModes
 
     private Double num1, num2;
@@ -104,7 +104,7 @@ public class Calculator {
             return Math.sqrt(num);
         } // if statement
 
-        if (newMode == MonoOperatorModes.oneDevidedBy) {
+        if (newMode == MonoOperatorModes.oneDividedBy) {
             return 1 / num;
         } // if statement
 
@@ -221,20 +221,25 @@ public class Calculator {
     
         // Standard Deviation calculation
         if (mode == StatOperatorModes.stddev) {
+            // Handle single element case
+            if (numbers.length == 1) {
+                return 0.0;  // Single element has no deviation
+            } // if statement
+    
             // Calculate mean first
             Double sum = 0.0;
             for (Double num : numbers) {
                 sum += num;
             } // for loop
             Double mean = sum / numbers.length;
-        
+
             // Calculate variance
             Double variance = 0.0;
             for (Double num : numbers) {
                 variance += Math.pow(num - mean, 2);
             } // for loop
-            variance /= numbers.length;
-        
+            variance /= (numbers.length - 1);  // Sample standard deviation
+
             // Standard deviation is square root of variance
             return Math.sqrt(variance);
         } // if statement
