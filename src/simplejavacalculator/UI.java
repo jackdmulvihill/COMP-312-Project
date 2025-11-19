@@ -121,8 +121,9 @@ public class UI implements ActionListener {
             button.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
         }
 
-        // Width increase for the Stat Mode toggle button
+        // Width increase for the Stat Mode toggle button and log button
         butStatMode.setPreferredSize(new Dimension(130, BUTTON_HEIGHT));
+        butlog.setPreferredSize(new Dimension(130, BUTTON_HEIGHT));
 
         // COME BACK TO THIS
         // Set colors for operation buttons
