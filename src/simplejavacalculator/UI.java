@@ -221,6 +221,14 @@ public class UI implements ActionListener {
         butMedian.addActionListener(this);
         butSum.addActionListener(this);
         butStdDev.addActionListener(this);
+
+        // Initially hide statistical function buttons
+        butMin.setVisible(false);
+        butMax.setVisible(false);
+        butMean.setVisible(false);
+        butMedian.setVisible(false);
+        butSum.setVisible(false);
+        butStdDev.setVisible(false);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -243,6 +251,9 @@ public class UI implements ActionListener {
                 butCos.setVisible(false);
                 butSin.setVisible(false);
                 butTan.setVisible(false);
+                butCsc.setVisible(false);
+                butSec.setVisible(false);
+                butCot.setVisible(false);
                 butxpowerofy.setVisible(false);
                 butlog.setVisible(false);
                 butrate.setVisible(false);
