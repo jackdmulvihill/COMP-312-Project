@@ -15,13 +15,22 @@ https://github.com/pH-7/Simple-Java-Calculator
 ## New additions
 - **Statistical Mode Interface**
 - **Redesigned UI**
+- **Redesigned Testing Suite**
+
+## Apache Ant
+- **To compile, run, and test this application, use Apache Ant**
+- https://ant.apache.org/
 
 ## To Compile New Changes
-- **javac src/simplejavacalculator/*.java**
+- **ant clean (Optional, but recommended)**
+- **ant compile**
 
 ## To Run
-- **java -cp src simplejavacalculator.SimpleJavaCalculator**
+- **ant run**
 
+## To Test
+- **ant compile-test (If testing suite is modified)**
+- **ant test**
 
 ## 💡 Authors
 
