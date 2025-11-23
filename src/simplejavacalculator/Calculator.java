@@ -175,7 +175,9 @@ public class Calculator {
         if (mode == StatOperatorModes.min) {
             Double min = numbers[0];
             for (Double num : numbers) {
-                if (num < min) min = num;
+                if (num < min) {
+                    min = num;
+                }
             }
             return min;
         } // if statement
@@ -184,7 +186,9 @@ public class Calculator {
         if (mode == StatOperatorModes.max) {
             Double max = numbers[0];
             for (Double num : numbers) {
-                if (num > max) max = num;
+                if (num > max) {
+                    max = num;
+                }
             }
             return max;
         } // if statement
@@ -202,7 +206,7 @@ public class Calculator {
         if (mode == StatOperatorModes.sum) {
             Double sum = 0.0;
             for (Double num : numbers) {
-            sum += num;
+                sum += num;
             }
             return sum;
         } // if statement

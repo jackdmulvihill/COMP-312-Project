@@ -39,7 +39,7 @@ public class UI implements ActionListener {
 
     // Added new buttons for all new functions added
     private final JButton but[], butAdd, butMinus, butMultiply, butDivide,
-            butEqual, butCancel, butSquareRoot, butSquare, butOneDevidedBy,
+            butEqual, butCancel, butSquareRoot, butSquare, butOneDividedBy,
             butCos, butSin, butTan, butCsc, butSec, butCot, butxpowerofy, butlog, butrate,
             butMin, butMax, butMean, butMedian, butSum, butStdDev;
     private final Calculator calc;
@@ -79,7 +79,7 @@ public class UI implements ActionListener {
         butEqual = new JButton("=");
         butSquareRoot = new JButton("√");
         butSquare = new JButton("x*x");
-        butOneDevidedBy = new JButton("1/x");
+        butOneDividedBy = new JButton("1/x");
         butCos = new JButton("Cos");
         butSin = new JButton("Sin");
         butTan = new JButton("Tan");
@@ -111,7 +111,7 @@ public class UI implements ActionListener {
         // Set sizes for new buttons
         JButton[] allButtons = {
             butAdd, butMinus, butMultiply, butDivide,
-            butEqual, butSquareRoot, butSquare, butOneDevidedBy,
+            butEqual, butSquareRoot, butSquare, butOneDividedBy,
             butCos, butSin, butTan, butCsc, butSec, butCot,
             butxpowerofy, butlog, butrate,
             butMin, butMax, butMean, butMedian, butSum, butStdDev,
@@ -162,7 +162,7 @@ public class UI implements ActionListener {
         panel.add(butDivide);
         panel.add(butSquare);
         panel.add(butSquareRoot);
-        panel.add(butOneDevidedBy);
+        panel.add(butOneDividedBy);
         panel.add(butCos);
         panel.add(butSin);
         panel.add(butTan);
@@ -198,7 +198,7 @@ public class UI implements ActionListener {
         butDivide.addActionListener(this);
         butSquare.addActionListener(this);
         butSquareRoot.addActionListener(this);
-        butOneDevidedBy.addActionListener(this);
+        butOneDividedBy.addActionListener(this);
         butCos.addActionListener(this);
         butSin.addActionListener(this);
         butTan.addActionListener(this);
@@ -251,7 +251,7 @@ public class UI implements ActionListener {
                 butDivide.setVisible(false);
                 butSquare.setVisible(false);
                 butSquareRoot.setVisible(false);
-                butOneDevidedBy.setVisible(false);
+                butOneDividedBy.setVisible(false);
                 butCos.setVisible(false);
                 butSin.setVisible(false);
                 butTan.setVisible(false);
@@ -281,7 +281,7 @@ public class UI implements ActionListener {
                 butDivide.setVisible(true);
                 butSquare.setVisible(true);
                 butSquareRoot.setVisible(true);
-                butOneDevidedBy.setVisible(true);
+                butOneDividedBy.setVisible(true);
                 butCos.setVisible(true);
                 butSin.setVisible(true);
                 butTan.setVisible(true);
@@ -422,7 +422,7 @@ public class UI implements ActionListener {
                 writer(calc.calculateMono(Calculator.MonoOperatorModes.squareRoot, reader()));
             }
 
-            if (source == butOneDevidedBy) {
+            if (source == butOneDividedBy) {
                 writer(calc.calculateMono(Calculator.MonoOperatorModes.oneDividedBy, reader()));
             }
 
