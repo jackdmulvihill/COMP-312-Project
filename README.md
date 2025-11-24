@@ -44,6 +44,7 @@ https://github.com/pH-7/Simple-Java-Calculator
 - [xdvrx1](https://github.com/xdvrx1)
 - [jackdmulvihill](https://github.com/jackdmulvihill)
 - [dgodinez44](https://github.com/dgodinez44)
+- [fareensamad](https://github.com/fareensamad)
 
 
 ## 📮 Contact
